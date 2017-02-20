@@ -10,10 +10,9 @@ var userSchema = new Schema({
 	password: String
 });
 
-var model = mongoose.model('user', userSchema);
-
 userSchema.pre('save', function(next){
-var user = this;
+	var user = this;
+
 	bcrypt.genSalt(10, function(err, salt){
 		if(err) { return next(err); }
 
@@ -25,5 +24,19 @@ var user = this;
 		});
 	});
 });
+
+var model = mongoose.model('user', userSchema);
+
+userSchema.methods.comparePassword = function(candidatePassword, callback){
+
+	//this.password is our hashed and salted password
+
+	bcrypt.compare(candidatePassword, this.password, function(err, isMatch){
+		//if there was an error, return the callback with the error
+		if (err) { return callback(err); }
+		//otherwise call the callback
+		callback(null, isMatch);
+	});
+}
 
 module.exports = model;

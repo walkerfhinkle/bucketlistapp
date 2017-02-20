@@ -1,6 +1,6 @@
 var User = require('../models/user');
 var jwt = require('jwt-simple');
-var config = require('./config');
+var config = require('../config');
 
 function createUserToken(user){
 	var timestamp = new Date().getTime();
@@ -41,4 +41,11 @@ exports.signup = function(req, res, next){
 			res.json({ token: createUserToken(user)});
 		});
 	});
+
+}
+
+exports.signin = function(req, res, next){
+	//User has already had their email and pw auth
+	//Provide a token
+	res.send({ token: createUserToken(req.user) });
 }
