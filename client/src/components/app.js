@@ -6,6 +6,7 @@ import PropsIntro from './3_PropsIntro';
 import StateIntro from './4_StateIntro';
 import ChildComponentsIntro from './5_ChildComponentsIntro';
 import NavBarHeader from './nav';
+import Video from './video/video'
 
 	export default class App extends Component {
 		render() {
