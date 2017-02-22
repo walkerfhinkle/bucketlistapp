@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
 import SearchBar from './search-bar';
-import videoDetail from './video-detail'
+import VideoDetail from './video-detail'
 
 const API_KEY = 'AIzaSyC3zukH9hJ7W1_e-xHzEBvSFRWMWp8X69c';
 
@@ -29,6 +29,7 @@ class Video extends Component {
 		return (
 			<div>
 				<SearchBar onSearchTermChange={videoSearch} />
+				<VideoDetail video={ this.state.selectedVideo} />
 			</div>
 		);
 	}
