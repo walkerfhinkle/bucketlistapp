@@ -6,7 +6,8 @@ import PropsIntro from './3_PropsIntro';
 import StateIntro from './4_StateIntro';
 import ChildComponentsIntro from './5_ChildComponentsIntro';
 import NavBarHeader from './nav';
-import Video from './video/video'
+// import Video from './video/video';
+import BandList from '../containers/BandList';
 
 	export default class App extends Component {
 		render() {
@@ -14,6 +15,7 @@ import Video from './video/video'
 				<div>
 
 					<NavBarHeader />
+					<BandList />
 
 					<h1>React Intro</h1>
 						<JSXIntro />
@@ -21,6 +23,7 @@ import Video from './video/video'
 						<PropsIntro name="Michael Bolton" title="The Neverending Elevator Music" />
 						<StateIntro />
 						<ChildComponentsIntro />
+
 				</div>
 			);
 		}
