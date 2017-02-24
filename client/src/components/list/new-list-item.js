@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
-import { createPost } from '../../actions/main';
+import { createPost } from '../../actions/index';
 import { Link } from 'react-router';
 
 class ListItem extends Component {
@@ -40,6 +40,6 @@ class ListItem extends Component {
 }
 
 export default reduxForm({
-	form: 'PostNewForm',
+	form: 'ListsNewForm',
 	fields: ['title', 'topic', 'url', 'content']
 }, null, { createPost })(ListItem);
