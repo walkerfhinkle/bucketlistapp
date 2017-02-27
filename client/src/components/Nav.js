@@ -11,7 +11,7 @@ import { Link } from 'react-router';
 			}else{
 				return [
 					<NavItem key={1} href="/signin">Sign In</NavItem>,
-					<NavItem key={2} href="#">Sign Up</NavItem>
+					<NavItem key={2} href="/signup">Sign Up</NavItem>
 				];
 			}
 		}
