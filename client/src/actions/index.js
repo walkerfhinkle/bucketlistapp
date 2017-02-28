@@ -1,11 +1,13 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from './types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, CREATE_POSTS } from './types';
 import authReducer from '../reducers/auth_reducer';
 
-// const ROOT_URL = 'http://rest.learncode.academy/api/paul';
-export const CREATE_POSTS = 'CREATE_POSTS';
 const ROOT_URL = 'http://localhost:3000';
+
+var config = {
+	headers: { authorization: localStorage.getItem('token') }
+}
 
 export function signupUser({ email, password }) {
 	return function(dispatch) {
@@ -41,11 +43,16 @@ export function signoutUser(){
 }
 
 export function createPost(props) {
-	const request = axios.post(`${ROOT_URL}/posts`, props);
-	return {
-		type: CREATE_POSTS,
-		payload: request
-	};
+	return function(dispatch){
+		axios.pos(`${ROOT_URL}/newitem`, { props }, config )
+			.then(request => {
+				dispatch({
+					type: CREATE_POSTS,
+					payload: request
+				});
+				browserHistory.push('/items');
+			});
+	}
 }
 
 export function authError(error) {
